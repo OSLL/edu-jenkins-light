@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jenkins_server>
+	<url>http://ip:port/</url>
+	<project_name>project_name</project_name>
+	<username>username</username>
+	<password>password</password>
+</jenkins_server>
