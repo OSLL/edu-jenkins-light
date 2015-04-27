@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <jenkins_server>
-	<url>http://ip:port/</url>
-	<project_name>project_name</project_name>
-	<username>username</username>
-	<password>password</password>
+  <url>http://194.85.173.9:20035/</url>
+  <project_name>Geo2Tag-core-devel</project_name>
+  <username></username>
+  <password></password>
 </jenkins_server>
