@@ -5,11 +5,16 @@
 <h1>Configurate server</h1>
 <form action="" method="post" name="Configurate">
     {{form.hidden_tag()}}
-    <p>    
+    <p>
         Please make sure your server is on, and IP address is reachable.<br>
-        
-        <br>Enter IP address:<br>
-        {{form.server_ipadress(size=25)}}
+    </p>
+    <p>
+        Enter server protocol:<br>
+        {{form.server_protocol(size=10)}}
+    </p>
+    <p>    
+        Enter IP address:<br>
+        {{form.server_ipaddress(size=25)}}
     </p>
     <p>
         Enter port:<br>

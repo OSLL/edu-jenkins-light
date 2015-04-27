@@ -1,7 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<jenkins_server>
-  <url>http://194.85.173.9:20035/</url>
-  <project_name>Geo2Tag-core-devel</project_name>
-  <username></username>
-  <password></password>
-</jenkins_server>
+<jenkins_server><server_protocol>http://</server_protocol><server_ipaddress>194.85.173.9</server_ipaddress><server_port>20035</server_port><project_name>Geo2Tag-core-devel</project_name><username></username><password></password></jenkins_server>

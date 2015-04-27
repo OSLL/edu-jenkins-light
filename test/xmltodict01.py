@@ -1,13 +1,16 @@
-import xmltodict
-from pprint import pprint 
+from xmltodict import parse, unparse
+from pprint import pprint
 
-#print setting 
 
-settings_file = "settings.xml"
+settings_file = 'settings.xml'
 
-with (open (settings_file, "r")) as file:
-    settings_data = file.read ()
+with (open(settings_file, 'r')) as file:
+    settings_data = file.read()
 
-settings = xmltodict.parse (settings_data) ["jenkins_server"]
+settings = parse(settings_data)
+pprint(settings)
 
-pprint (settings)
+
+settings_data = unparse(settings)
+file = open(settings_file, 'w')
+file.write(settings_data)

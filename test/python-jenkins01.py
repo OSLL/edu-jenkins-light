@@ -1,20 +1,20 @@
-from jenkins import Jenkins, JenkinsError
-import xmltodict 
-from pprint import pprint 
-
-#import settings
-settings_file = "settings.xml"
+from jenkins import Jenkins
+from xmltodict import parse
+from pprint import pprint
 
 
-with (open (settings_file, "r")) as file:
-	settings_data = file.read ()
-
-settings = xmltodict.parse (settings_data) ["jenkins_server"]
+settings_file = 'settings.xml'
 
 
-#connecting to server and check project status
-server = Jenkins (settings ["url"], settings ["username"], settings ["password"])
+with (open(settings_file, 'r')) as file:
+    settings_data = file.read()
 
-project_info = server.job_info (settings ["project_name"])
+settings = parse(settings_data)['jenkins_server']
 
-pprint (project_info ['healthReport'])
+server = Jenkins(
+    settings['server_protocol'] + settings['server_ipaddress'] + ':' + settings['server_port'], 
+    settings['username'], 
+    settings['password']
+    )
+project_info = server.job_info(settings['project_name'])
+pprint(project_info['healthReport'])
