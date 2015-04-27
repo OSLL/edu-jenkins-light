@@ -1,0 +1,18 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{title}} - jenkins-light server</title>
+    {% else %}
+    <title>jenkins-light server</title>
+    {% endif %}
+  </head>
+  <body>
+    <div> jenkins-light server: 
+        <a href="/status">Status</a> 
+        <a href="/configurate">Configurate</a>
+    </div>
+    <hr>
+    
+    {% block content %}{% endblock %}
+  </body>
+</html>
