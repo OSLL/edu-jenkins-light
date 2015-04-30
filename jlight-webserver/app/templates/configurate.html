@@ -1,37 +1,48 @@
-<!-- extend base layout -->
 {% extends "base.html" %}
 
 {% block content %}
 <h1>Configurate server</h1>
 <form action="" method="post" name="Configurate">
     {{form.hidden_tag()}}
+    <p>Please make sure your server is on, and IP address is reachable.</p>
+    
+    <p>Enter server protocol:<br>
+        {{form.server_protocol(size=20, placeholder='server protocol')}}
+    </p>
+    
+    <p>Enter IP address:<br>
+        {{form.server_ipaddress(size=20, placeholder='IP address', maxlength='15')}}
+    </p>
+    
+    <p>Enter port:<br>
+        {{form.server_port(size=4, placeholder='port', maxlength='5')}}
+    </p>
+    
+    <p>Enter project name:<br>
+        {{form.project_name(size=20, placeholder='project name')}}
+    </p>
+    
+    <p>Enter username:<br>
+        {{form.username(size=20, placeholder='username')}}
+    </p>
+    
+    <p>Enter password:<br>
+        {{form.password(size=20, placeholder='password')}}
+    </p>
+    
     <p>
-        Please make sure your server is on, and IP address is reachable.<br>
+        {{form.submit()}}
+        {{form.load_settings()}}
     </p>
-    <p>
-        Enter server protocol:<br>
-        {{form.server_protocol(size=10)}}
-    </p>
-    <p>    
-        Enter IP address:<br>
-        {{form.server_ipaddress(size=25)}}
-    </p>
-    <p>
-        Enter port:<br>
-        {{form.server_port(size=4)}}
-    </p>
-    <p>
-        Enter project name:<br>
-        {{form.project_name(size=30)}}
-    </p>
-    <p>
-        Enter username:<br>
-        {{form.username(size=30)}}
-    </p>
-    <p>
-        Enter password:<br>
-        {{form.password(size=30)}}
-    </p>
-    <p><input type="submit" value="Reconfigurate"></p>
+    
+    {% if form.errors %}
+    <ul class="errors">
+        {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+            {% for error in field_errors %}
+                <li>{{ form[field_name].label }}: {{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+{% endif %}
 </form>
 {% endblock %}

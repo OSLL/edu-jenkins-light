@@ -1,18 +1,42 @@
 <html>
-  <head>
-    {% if title %}
-    <title>{{title}} - jenkins-light server</title>
-    {% else %}
-    <title>jenkins-light server</title>
-    {% endif %}
-  </head>
-  <body>
+    <head>
+        {% if title %}
+        <title>{{title}} - jenkins-light server</title>
+        {% else %}
+        <title>jenkins-light server</title>
+        {% endif %}
+    
+        <style>
+            ul.list {
+                margin: 0;
+                padding: 4px;
+            }
+            ul.list li {
+                display: inline;
+                margin-right: 5px;
+                padding: 3px;
+            }
+            ul.errors {
+                margin: 0;
+                padding: 4px;
+            }
+            ul.errors li {
+                margin-right: 5px;
+                padding: 3px;
+                color: red;
+            }
+        </style>
+    </head>
+<body>
     <div> jenkins-light server: 
-        <a href="/status">Status</a> 
-        <a href="/configurate">Configurate</a>
+        <ul class="list">
+            <li><a href="/status">Status</a> 
+            <li><a href="/configurate">Configurate</a>
+        </ul>
     </div>
     <hr>
-    
-    {% block content %}{% endblock %}
-  </body>
+
+    {% block content %}
+    {% endblock %}
+    </body>
 </html>

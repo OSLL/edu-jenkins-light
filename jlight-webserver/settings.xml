@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<jenkins_server><password>None</password><server_ipaddress>194.85.173.9</server_ipaddress><project_name>Geo2Tag-core-devel</project_name><server_port>20035</server_port><server_protocol>http://</server_protocol><username>None</username></jenkins_server>
+<jenkins_server><password></password><server_ipaddress>194.85.173.9</server_ipaddress><server_port>20035</server_port><project_name>Geo2Tag-core-devel</project_name><username></username><server_protocol>http://</server_protocol></jenkins_server>
