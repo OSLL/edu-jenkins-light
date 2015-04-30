@@ -32,4 +32,4 @@ class ConfigurateForm(Form):
     password = PasswordField(u'password',
                              validators=[Optional()])
     load_settings = SubmitField(u'Load settings')
-    submit = SubmitField(u'submit')
+    submit = SubmitField(u'Configurate')
