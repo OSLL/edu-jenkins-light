@@ -7,9 +7,15 @@ from app.update_settings import save_settings, load_settings
 @app.route(u'/')
 @app.route(u'/status')
 def get_status():
-    return render_template(
+    data_file = '/home/work/project/proj/status.data'
+    
+    with (open(data_file, 'r')) as file:
+        settings_data = file.read()
+
+    return settings_data
+    '''return render_template(
         u'status.html',
-        title=u'Status')
+        title=u'Status')'''
 
 
 @app.route(u'/configurate', methods=[u'GET', u'POST'])

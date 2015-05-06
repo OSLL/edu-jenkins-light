@@ -1,7 +1,7 @@
 WTF_CSRF_ENABLED = True
 SECRET_KEY = u'my_secret_key'
 
-SETTINGS_FILE = u'jenkins-server-settings.xml'
+SETTINGS_FILE = u'../settings.xml'
 
 WEBSERVER_ADDRESS = u'0.0.0.0'
 WEBSERVER_PORT = 5000
