@@ -1,19 +1,17 @@
 from jenkins import Jenkins
-from xmltodict import parse
 from pprint import pprint
+import configparser
+import os
+import tempfile
 
+config = configparser.ConfigParser()
+config.read('config.cfg')
 
-settings_file = 'settings.xml'
-
-
-with (open(settings_file, 'r')) as file:
-    settings_data = file.read()
-
-settings = parse(settings_data)['jenkins_server']
+settings = config['jenkins_server']
 
 server = Jenkins(
-    settings['server_protocol'] + settings['server_ipaddress'] + ':' + settings['server_port'], 
-    settings['username'], 
+    settings['server_protocol'] + settings['server_ipaddress'] + ':' + settings['server_port'],
+    settings['username'],
     settings['password']
     )
 project_info = server.job_info(settings['project_name'])
