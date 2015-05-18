@@ -4,8 +4,8 @@ from app.forms import ConfigurateForm
 from app.update_settings import save_settings, load_settings
 
 
-@app.route(u'/')
-@app.route(u'/status')
+@app.route('/')
+@app.route('/status')
 def get_status():
     data_file = '/home/work/project/proj/status.data'
     
@@ -14,11 +14,11 @@ def get_status():
 
     return settings_data
     '''return render_template(
-        u'status.html',
-        title=u'Status')'''
+        'status.html',
+        title='Status')'''
 
 
-@app.route(u'/configurate', methods=[u'GET', u'POST'])
+@app.route('/configurate', methods=['GET', 'POST'])
 def config_server():
     form = ConfigurateForm()
 
@@ -29,9 +29,9 @@ def config_server():
             form.submit.data and
             form.validate()):
         save_settings(form)
-        return redirect(u'/')
+        return redirect('/')
 
     return render_template(
-        u'configurate.html',
-        title=u'Configurate',
+        'configurate.html',
+        title='Configurate',
         form=form)

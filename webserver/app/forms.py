@@ -8,7 +8,7 @@ class TextNumberRange(object):
         self.min = min
         self.max = max
         if not message:
-            message = u'Number must be between %d and %d.' % (min, max)
+            message = 'Number must be between %d and %d.' % (min, max)
         self.message = message
 
     def __call__(self, form, field):
@@ -19,17 +19,17 @@ class TextNumberRange(object):
 
 
 class ConfigurateForm(Form):
-    server_protocol = TextField(u'server protocol',
+    server_protocol = TextField('server protocol',
                                 validators=[Required()])
-    server_ipaddress = TextField(u'server ipaddress',
+    server_ipaddress = TextField('server ipaddress',
                                  validators=[IPAddress()])
-    server_port = TextField(u'server port',
+    server_port = TextField('server port',
                             validators=[TextNumberRange(min=1, max=65535)])
-    project_name = TextField(u'project name',
+    project_name = TextField('project name',
                              validators=[Required()])
-    username = TextField(u'username',
+    username = TextField('username',
                          validators=[Optional()])
-    password = PasswordField(u'password',
+    password = PasswordField('password',
                              validators=[Optional()])
-    load_settings = SubmitField(u'Load settings')
-    submit = SubmitField(u'Configurate')
+    load_settings = SubmitField('Load settings')
+    submit = SubmitField('Configurate')
