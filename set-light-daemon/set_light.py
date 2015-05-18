@@ -5,7 +5,7 @@ import logging
 import sys
 sys.path.append('../')
 from config import PROJECT_STATUS_DATA_FILE as proj_status_file
-from config import SET_LIGHT_TIMER as timer
+from config import SET_LIGHT_TIMER as timer_for_sleep
 from config import RED_GPIO_ID as red
 from config import YELLOW_GPIO_ID as yellow
 from config import GREEN_GPIO_ID as green
@@ -44,7 +44,6 @@ def read_status():
                 light = 'yellow-green'
             else:
                 light = 'green'
-
     #clear status
     with (open(proj_status_file, 'w')) as file:
         pass
@@ -53,11 +52,17 @@ def read_status():
 
 
 def set_light():
-    setup_lights()
-    light = read_status()
+    try:
+         timer = timer_for_sleep
+         light = read_status()
+    except Exception as inst:
+        logging.info(str(type(inst)) + ' ' + str(inst.args))
 
+    setup_lights()
+    
+    logging.info('Light is %s.' % light)
     if light == 'panic':
-        logging.info('Light is panic.')
+        timer = 10
         while timer > 0:
             timer -= 0.4
             set_status(True, True, True)
@@ -77,5 +82,5 @@ def set_light():
     elif light == 'green':
         set_status(False, False, True)
         time.sleep(timer)
-
+    
     RPIO.cleanup()
