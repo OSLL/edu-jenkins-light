@@ -2,20 +2,18 @@ from flask import render_template, redirect
 from app import app
 from app.forms import ConfigurateForm
 from app.update_settings import save_settings, load_settings
+from config import PROJECT_STATUS_DATA_FILE as statusPath
 
 
 @app.route('/')
 @app.route('/status')
 def get_status():
-    data_file = '/home/work/project/proj/status.data'
-    
-    with (open(data_file, 'r')) as file:
-        settings_data = file.read()
+    with (open(statusPath, 'r')) as file:
+        status = file.read()
 
-    return settings_data
-    '''return render_template(
+    return render_template(
         'status.html',
-        title='Status')'''
+        title='Status', status=status)
 
 
 @app.route('/configurate', methods=['GET', 'POST'])

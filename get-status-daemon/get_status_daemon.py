@@ -6,7 +6,7 @@ from get_status import get_status
 
 import sys
 sys.path.append('../')
-from config import PROJECT_STATUS_DATA_FILE as proj_status_file
+from config import PROJECT_STATUS_DATA_FILE as statusPath
 from config import LOG_DIR as log_dir
 from config import PID_DIR as pid_dir
 
@@ -14,7 +14,7 @@ from config import PID_DIR as pid_dir
 class GetStatusDaemon(Daemon):
     def run(self):
         while True:
-            with (open(proj_status_file, 'w')) as file:
+            with (open(statusPath, 'w')) as file:
                 status = None
 
                 try:
@@ -39,16 +39,16 @@ if __name__ == '__main__':
 
     if len(sys.argv) == 2:
         if 'start' == sys.argv[1]:
-            logging.info('Daemon start')
+            logging.info('Daemon start.')
             daemon.start()
         elif 'stop' == sys.argv[1]:
-            logging.info('Daemon stop')
+            logging.info('Daemon stop.')
             daemon.stop()
         elif 'restart' == sys.argv[1]:
-            logging.info('Daemon restart')
+            logging.info('Daemon restart.')
             daemon.restart()
         else:
-            print ('Unknown command')
+            print ('Unknown command.')
             sys.exit(2)
         sys.exit(0)
     else:
